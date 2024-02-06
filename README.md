@@ -21,14 +21,14 @@ Rundown of the arguments:
 - `--expname="fuse_crossmodal"`: experiment name
 
 ## Prognosis Task for iCTCF
-First run the following scripts to download and preprocess the iCTCF dataset (2D montage generation)
+First run the following scripts to download and preprocess the iCTCF dataset (2D montage generation) or use our prepared iCTCF montages at https://drive.google.com/file/d/1VV9KFMyR3-jRZRBbxJqAAunbKtoD8EgP/view?usp=sharing
+
 ```
 cd dataset/iCTCF
 python no1_patient_enrollment.py
 python no2_slice_to_3D.py
 python no3_generate_montage.py
 ```
-Our prepared montages for iCTCF are available at https://drive.google.com/file/d/1VV9KFMyR3-jRZRBbxJqAAunbKtoD8EgP/view?usp=sharing
 
 After the dataset preprocessing has been done, train the DMIB model with
 ```
