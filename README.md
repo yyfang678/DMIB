@@ -28,11 +28,12 @@ python no1_patient_enrollment.py
 python no2_slice_to_3D.py
 python no3_generate_montage.py
 ```
+Our prepared montages for iCTCF are available at https://drive.google.com/file/d/1VV9KFMyR3-jRZRBbxJqAAunbKtoD8EgP/view?usp=sharing
 
 After the dataset preprocessing has been done, train the DMIB model with
 ```
 cd prognosis_tasks
-python train_fuse_crossmodal.py --use_fuse_clinical_axial --use_clinical --preprocess_clinical=2 --model_name="proposed_crossmodal" --clinical_continuous="Age,Body temperature,MCHC,MCH,MCV,HCT,HGB,RBC,PDW,PLCT,MPV,PLT,BA,EO,MO,LY,NE,BAP,EOP,MOP,LYP,NEP,WBC,PLCR,RDWSD,RDWCV,ESR,CRP,PCT,ALG,ALB,ALP,ALT,AST,BUN,CA,CL,CO2,CREA,GGT,GLB,K,MG,Na,PHOS,TBIL,TP,URIC,CHOL,CK,HDLC,LDH,TG,AnG,DBIL,GLU,LDLC,OSM,PA,TBA,HBDH,CysC,LAP,5NT,HC,SAA,SdLDL,CD3+,CD4+,CD8+,BC,NKC,CD4/CD8,IL-2,IL-4,IL-6,IL-10,TNF,IFN" --clinical_category="Gender,Underlying diseases" --patient_died_ct_csv="../dataset/iCTCF/patients_enrol_list/enrolled_1.csv" --patient_survived_ct_csv="../dataset/iCTCF/patients_enrol_list/enrolled_0.csv" --patiens_info_csv="../dataset/iCTCF/patients_enrol_list/enrolled_all.csv" --data_clinical="../dataset/iCTCF/patients_enrol_list/enrolled_all.csv" --datapath_train="../dataset/iCTCF/2D_montage/" --datapath_test="../dataset/iCTCF/2D_montage/" --use_IB --expname="iCTCF_all"
+python train_fuse_covid.py --use_fuse_clinical_axial --use_clinical --preprocess_clinical=2 --model_name="proposed_crossmodal" --clinical_continuous="Age,Body temperature,MCHC,MCH,MCV,HCT,HGB,RBC,PDW,PLCT,MPV,PLT,BA,EO,MO,LY,NE,BAP,EOP,MOP,LYP,NEP,WBC,PLCR,RDWSD,RDWCV,ESR,CRP,PCT,ALG,ALB,ALP,ALT,AST,BUN,CA,CL,CO2,CREA,GGT,GLB,K,MG,Na,PHOS,TBIL,TP,URIC,CHOL,CK,HDLC,LDH,TG,AnG,DBIL,GLU,LDLC,OSM,PA,TBA,HBDH,CysC,LAP,5NT,HC,SAA,SdLDL,CD3+,CD4+,CD8+,BC,NKC,CD4/CD8,IL-2,IL-4,IL-6,IL-10,TNF,IFN" --clinical_category="Gender,Underlying diseases" --patient_died_ct_csv="../dataset/iCTCF/patients_enrol_list/enrolled_1.csv" --patient_survived_ct_csv="../dataset/iCTCF/patients_enrol_list/enrolled_0.csv" --patients_info_csv="../dataset/iCTCF/patients_enrol_list/enrolled_all.csv" --data_clinical="../dataset/iCTCF/patients_enrol_list/enrolled_all.csv" --datapath_train="../dataset/iCTCF/2D_montage/" --datapath_test="../dataset/iCTCF/2D_montage/" --use_IB --expname="iCTCF_all"
 ```
 
 ## Prognosis Task Comparisons
