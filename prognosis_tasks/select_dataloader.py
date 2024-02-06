@@ -50,8 +50,7 @@ class Dataset_2Dmontage(Dataset):
 
         self.ct_list_positive = died_patient_ct[died_patient_ct['Pseudonym'].isin(self.data_list_positive)]['CT_name']
         self.ct_list_negative = survived_patient_ct[survived_patient_ct['Pseudonym'].isin(self.data_list_negative)]['CT_name']
-
-
+        
         self.imagepath = imagepath
         self.maskpath  = maskpath
 
@@ -299,7 +298,6 @@ class Dataset_2Dmontage_ITAC_fusion(Dataset):
 
         self.data_list_positive = []
         self.data_list_negative = []
-
         for i in range(len(x)):#Dataset_cam_2D_bootstrap_all
             if y[i] == 1:
                 self.data_list_positive.append(x[i])
@@ -322,7 +320,6 @@ class Dataset_2Dmontage_ITAC_fusion(Dataset):
         self.label_list = []
 
         for i in range(use_aug[1]):
-
             ct_name = [self.imagepath + patient + '_s' + str(i) + '.png' for patient in self.ct_list_positive]
             ct_name_coronal = [self.maskpath + patient + '_s' + str(i) + '.png' for patient in self.ct_list_positive]
             ct_mask_name = [self.maskpath + patient + '_s' + str(i) + '.png' for patient in self.ct_list_positive]
@@ -336,7 +333,7 @@ class Dataset_2Dmontage_ITAC_fusion(Dataset):
             self.mask_list.extend(ct_mask_name)
             self.label_list.extend(np.ones(len(ct_name)).tolist())
             if self.use_clinical:
-                ct_list = [df.loc[df['ID'] == int(patient),features].values[0] for patient in self.ct_list_positive]
+                ct_list = [df.loc[df[key_ct] == patient, features].values[0] for patient in self.ct_list_positive]
                 self.clinical_list.extend(ct_list)
 
         for i in range(use_aug[0]):
@@ -348,7 +345,7 @@ class Dataset_2Dmontage_ITAC_fusion(Dataset):
             self.mask_list.extend(ct_mask_name)
             self.label_list.extend(np.zeros(len(ct_name)).tolist())
             if self.use_clinical:
-                ct_list = [df.loc[df['ID'] == int(patient), features].values[0] for patient in self.ct_list_negative]
+                ct_list = [df.loc[df[key_ct] == patient, features].values[0] for patient in self.ct_list_negative]
                 self.clinical_list.extend(ct_list)
 
 
